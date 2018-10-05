@@ -1,0 +1,46 @@
+CREATE procedure [Pizzeria].[USP_InsertCustomer]
+
+@CustUserName nvarchar(15),
+@CustPassword nvarchar(15),
+@CustFName nvarchar(50),
+@CustLName nvarchar(50),
+@CustContact bigint,
+@CustEmail nvarchar(50),
+@CustAddress nvarchar(100),
+@CustCity nvarchar(20),
+@CustPincode nvarchar(10)
+AS
+insert into Pizzeria.Customer(CustUserName,CustPassword,CustFName,CustLName,CustContact,CustEmail,CustAddress,CustCity,CustPincode) values(@CustUserName,@CustPassword,@CustFName,@CustLName,@CustContact,@CustEmail,@CustAddress,@CustCity,@CustPincode)
+insert into Pizzeria.LoginCredentials(UserName,UserPassword) values(@CustUserName,@CustPassword)
+Return 0
+
+
+
+
+
+CREATE Procedure [Pizzeria].[USP_LoginValidation]
+@UserName varchar(30),
+@UserPassword varchar(30)
+as
+select UserName from Pizzeria.LoginCredentials where UserName = @UserName and UserPassword = @UserPassword
+return 0
+
+
+
+
+CREATE procedure [Pizzeria].[InsertTempOrder]
+
+@PizzaName varchar(50),
+@PizzaSize varchar(50),
+@PizzaPrice int 
+as
+insert into Pizzeria.TempOrder values(@PizzaName,@PizzaSize,@PizzaPrice)
+
+
+
+
+
+CREATE procedure [Pizzeria].[SelectTempOrder]
+as
+select PizzaName,PizzaSize,PizzaPrice from Pizzeria.TempOrder
+return 0

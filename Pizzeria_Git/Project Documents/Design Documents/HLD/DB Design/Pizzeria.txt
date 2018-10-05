@@ -1,0 +1,38 @@
+create table Pizzeria.Customer
+(
+CustID int primary key,
+CustUserName nvarchar(15),
+CustPassword nvarchar(15),
+CustFName nvarchar(50),
+CustLName nvarchar(50),
+CustContact bigint,
+CustEmail nvarchar(50),
+CustAddress nvarchar(100),
+CustCity nvarchar(20),
+CustPincode nvarchar(10),
+CustMembershipId int,
+);
+
+------------------------------
+
+create table Pizzeria.Pizza
+(
+PizzaID int Primary Key,
+PizzaName nvarchar(20),
+ImageURL nvarchar(100),
+Category nvarchar(20),
+Price money,
+);
+
+-------------------------------
+
+create table Pizzeria.OrderDetails
+(
+OrderID int Primary Key,
+OrderStatus varchar(50),
+custID int,
+PizzaID nvarchar(50),
+TotalPrice money,
+delivery_datetime datetime,
+);
+
